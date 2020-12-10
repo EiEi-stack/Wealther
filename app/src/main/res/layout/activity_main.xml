@@ -6,13 +6,18 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     tools:context=".MainActivity">
-
+<ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_centerInParent="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/tvTemperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="20 C"
         android:textSize="64sp"
+        android:visibility="gone"
         android:layout_alignParentBottom="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -20,18 +25,29 @@
         android:fontFamily="sans-serif-condensed-light"
         app:layout_constraintTop_toTopOf="parent" />
     <ImageView
-        android:id="@+id/ivWealtherStauts"
+        android:id="@+id/ivWeatherStatus"
         android:layout_width="60dp"
         android:layout_above="@id/tvTemperature"
+        android:visibility="gone"
         android:src="@drawable/ic_launcher_background"
         android:layout_height="60dp"/>
 
-    <TextView
+    <EditText
         android:id="@+id/tvCityName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/btnSearch"
         android:layout_centerHorizontal="true"
+        android:visibility="gone"
         android:layout_marginTop="16dp"
         android:text="Yangon"/>
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Search"
+        android:textAllCaps="false"/>
 
 </RelativeLayout>

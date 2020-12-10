@@ -7,25 +7,41 @@ import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.PermissionToken
-import com.karumi.dexter.listener.PermissionDeniedResponse
-import com.karumi.dexter.listener.PermissionGrantedResponse
-import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.single.PermissionListener
-import com.squareup.moshi.Moshi
+import com.bumptech.glide.Glide
 import okhttp3.*
-import org.json.JSONObject
-import java.io.IOException
-import java.util.jar.Manifest
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 class MainActivity : AppCompatActivity() {
     companion object {
         private const val RESULT_CODE_PERMISSION = 100
         private const val API_KEY = "560c6f6a649feaea5ddf017d0fa2fd39"
     }
+
+    private val progressBar by lazy {
+        findViewById<ProgressBar>(R.id.progressBar)
+    }
+    private val tvTemperature by lazy {
+        findViewById<TextView>(R.id.tvTemperature)
+    }
+    private val ivWeatherStatus by lazy {
+        findViewById<ImageView>(R.id.ivWeatherStatus)
+    }
+    private val etCityName by lazy {
+        findViewById<EditText>(R.id.tvCityName)
+    }
+    private val btnSearch by lazy {
+        findViewById<Button>(R.id.btnSearch)
+    }
+    private val retrofit = Retrofit.Builder()
+        .baseUrl("https://api.openweathermap.org/data/2.5/")
+        .addConverterFactory(MoshiConverterFactory.create())
+        .client(OkHttpClient())
+        .build()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,6 +93,11 @@ class MainActivity : AppCompatActivity() {
 //        Log.i("MainActivity.json",name)
 //        val phNumber = jsonObject.getInt("phno")
 //        Log.i("MainActivity.json",phNumber.toString()))
+
+        btnSearch.setOnClickListener {
+            val cityName = etCityName.text.toString()
+            executeNetworkCall(cityName)
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -85,38 +106,108 @@ class MainActivity : AppCompatActivity() {
             this@MainActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
         Log.i("MainActivity.OnCreate", location?.latitude.toString())
-        executeNetworkCall(latitude = location?.latitude.toString(),longitude = location?.longitude.toString())
+        executeNetworkCall(
+            latitude = location?.latitude.toString(),
+            longitude = location?.longitude.toString()
+        )
     }
 
     private fun executeNetworkCall(
         latitude: String,
         longitude: String
     ) {
-        val httpUrl =
-            HttpUrl.Builder().scheme("https").host("api.openweathermap.org").addPathSegment("data")
-                .addPathSegment("2.5").addPathSegment("weather").addQueryParameter("lat", latitude)
-                .addQueryParameter("lon",longitude).addQueryParameter("appid", API_KEY).build()
+//        val httpUrl =
+//            HttpUrl.Builder().scheme("https").host("api.openweathermap.org").addPathSegment("data")
+//                .addPathSegment("2.5").addPathSegment("weather").addQueryParameter("lat", "16.8409")
+//                .addQueryParameter("lon","96.1735").addQueryParameter("appid", API_KEY).build()
 
-        val client = OkHttpClient()
-        val request = Request.Builder().url(httpUrl).build()
-        client.newCall(request).enqueue(object:Callback{
-            override fun onFailure(call: Call, e: IOException) {
-                e.printStackTrace()
+        showLoading()
+        val openWeatherMapApi = retrofit.create(OpenWeatherMapApi::class.java)
+        openWeatherMapApi.geoCoordinate(
+            latitude = "16.8409",
+            longitude = "96.1735",
+            appId = API_KEY,
+            units = "metric"
+        ).enqueue(object : retrofit2.Callback<OpenWeatherMapResponse> {
+            override fun onFailure(call: retrofit2.Call<OpenWeatherMapResponse>, t: Throwable) {
+                t.printStackTrace()
             }
 
-            override fun onResponse(call: Call, response: Response) {
-                if(response.isSuccessful){
-                    response?.body?.let { responseBody ->
-                        val jsonString=responseBody.toString()
-                        val moshi = Moshi.Builder().build()
-                        val adapter = moshi.adapter(OpenWeatherMapResponse::class.java)
-                        val openWeatherResponse = adapter.fromJson(jsonString)
-                        Log.i("MainActivity.Response", openWeatherResponse.toString())
-
+            override fun onResponse(
+                call: retrofit2.Call<OpenWeatherMapResponse>,
+                response: retrofit2.Response<OpenWeatherMapResponse>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.let { openWeatherMapResponse ->
+                        Log.i("onResponse", openWeatherMapResponse.toString())
+                        val iconUrl = openWeatherMapResponse.weatherList.getOrNull(0)?.icon ?: ""
+                        val fullURL = "https://openweathermap.org/img/wn/$iconUrl@2x.png"
+                        showData(
+                            temperature = openWeatherMapResponse.main.temp,
+                            cityName = openWeatherMapResponse.name,
+                            weatherIcon = fullURL
+                        )
                     }
+                }
+            }
 
-                }else{
-                    Log.i("MainActivity.Response", "Response Fail")
+        })
+
+//        val client = OkHttpClient()
+//        val request = Request.Builder().url(httpUrl).build()
+//        client.newCall(request).enqueue(object:Callback{
+//            override fun onFailure(call: Call, e: IOException) {
+//                e.printStackTrace()
+//                Log.i("onResponse", e.printStackTrace().toString())
+//            }
+//
+//            override fun onResponse(call: Call, response: Response) {
+//                if(response.isSuccessful){
+//                    response?.body?.let { responseBody ->
+//                        val jsonString=responseBody.string()
+//                        val moshi = Moshi.Builder().build()
+//                        val adapter = moshi.adapter(OpenWeatherMapResponse::class.java)
+//                        val openWeatherResponse = adapter.fromJson(jsonString)
+//                        Log.i("onResponse", openWeatherResponse.toString())
+//
+//                    }
+//
+//                }else{
+//                    Log.i("onResponse", "Response Fail")
+//                }
+//            }
+//        })
+    }
+
+    private fun executeNetworkCall(
+        cityName: String
+    ) {
+        showLoading()
+        val openWeatherMapApi = retrofit.create(OpenWeatherMapApi::class.java)
+        openWeatherMapApi.getByCityName(
+            q = cityName,
+            appId = API_KEY,
+            units = "metric"
+        ).enqueue(object : retrofit2.Callback<OpenWeatherMapResponse> {
+            override fun onFailure(call: retrofit2.Call<OpenWeatherMapResponse>, t: Throwable) {
+                t.printStackTrace()
+            }
+
+            override fun onResponse(
+                call: retrofit2.Call<OpenWeatherMapResponse>,
+                response: retrofit2.Response<OpenWeatherMapResponse>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.let { openWeatherMapResponse ->
+                        Log.i("onResponse", openWeatherMapResponse.toString())
+                        val iconUrl = openWeatherMapResponse.weatherList.getOrNull(0)?.icon ?: ""
+                        val fullURL = "https://openweathermap.org/img/wn/$iconUrl@2x.png"
+                        showData(
+                            temperature = openWeatherMapResponse.main.temp,
+                            cityName = openWeatherMapResponse.name,
+                            weatherIcon = fullURL
+                        )
+                    }
                 }
             }
 
@@ -136,5 +227,29 @@ class MainActivity : AppCompatActivity() {
                 Log.i("MainActivity.OnCreate", "Permission Denied")
             }
         }
+    }
+
+    private fun showLoading() {
+        progressBar.visibility = View.VISIBLE
+        etCityName.visibility = View.GONE
+        tvTemperature.visibility = View.GONE
+        ivWeatherStatus.visibility = View.GONE
+        btnSearch.visibility = View.GONE
+    }
+
+    private fun showData(
+        temperature: String,
+        cityName: String,
+        weatherIcon: String
+    ) {
+        tvTemperature.text = "$temperature°C"
+        etCityName.setText(cityName)
+        Glide.with(this).load(weatherIcon).into(ivWeatherStatus)
+
+        progressBar.visibility = View.GONE
+        etCityName.visibility = View.VISIBLE
+        tvTemperature.visibility = View.VISIBLE
+        ivWeatherStatus.visibility = View.VISIBLE
+        btnSearch.visibility = View.VISIBLE
     }
 }
