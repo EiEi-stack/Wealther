@@ -12,14 +12,21 @@ import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionDeniedResponse
+import com.karumi.dexter.listener.PermissionGrantedResponse
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.single.PermissionListener
 import okhttp3.*
+import org.w3c.dom.Text
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.jar.Manifest
 
 class MainActivity : AppCompatActivity() {
     companion object {
         private const val RESULT_CODE_PERMISSION = 100
-        private const val API_KEY = "560c6f6a649feaea5ddf017d0fa2fd39"
     }
 
     private val progressBar by lazy {
@@ -32,47 +39,41 @@ class MainActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.ivWeatherStatus)
     }
     private val etCityName by lazy {
-        findViewById<EditText>(R.id.tvCityName)
+        findViewById<EditText>(R.id.etCityName)
     }
     private val btnSearch by lazy {
         findViewById<Button>(R.id.btnSearch)
     }
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.openweathermap.org/data/2.5/")
-        .addConverterFactory(MoshiConverterFactory.create())
-        .client(OkHttpClient())
-        .build()
+    private val retrofit by lazy {
+        RetrofitInstanceFactory.instance()
+    }
+    private val tvError by lazy {
+        findViewById<TextView>(R.id.tvError)
+    }
+    private val btnReset by lazy {
+        findViewById<Button>(R.id.btnReset)
+    }
+    private val tvShowCityName by lazy {
+        findViewById<TextView>(R.id.tvCityName)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        Dexter.withActivity(this)
-////            .withPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
-////            .withListener(object:PermissionListener{
-////                @SuppressLint("MissingPermission")
-////                override fun onPermissionGranted(p0: PermissionGrantedResponse?) {
-////                    Log.i("MainActivity.OnCreate","permission granted")
-////                    val locationManager = this@MainActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-////                    val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-////                    Log.i("MainActivity.OnCreate",location?.latitude.toString())
-////                }
-////
-////                override fun onPermissionRationaleShouldBeShown(
-////                    p0: PermissionRequest?,
-////                    p1: PermissionToken?
-////                ) {
-////
-////                    Log.i("MainActivity.OnCreate","Permission Shown")
-////                }
-////
-////                override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
-////
-////                    Log.i("MainActivity.OnCreate","Permission denied")
-////                }
-////
-////            }).check()
-////        setContentView(R.layout.activity_main))
 
+        btnSearch.setOnClickListener {
+            val cityName = etCityName.text.toString()
+            executeNetworkCall(cityName)
+        }
+        btnReset.setOnClickListener {
+            getLocation()
+        }
+
+        getLocation()
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun getLocation() {
         if (ContextCompat.checkSelfPermission(
                 this,
                 android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -83,54 +84,30 @@ class MainActivity : AppCompatActivity() {
                 arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), RESULT_CODE_PERMISSION
             )
         } else {
-            getLocation()
+            val locationManager =
+                this@MainActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            val location =
+                locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            Log.i("MainActivity.OnCreate", location?.latitude.toString())
+            executeNetworkCall(
+                latitude = location?.latitude.toString(),
+                longitude = location?.longitude.toString()
+            )
         }
-        //JsonPure
-//        val json = "{\"name\": \"Ei Ei Han\",\"phno\": 12345}"
-//
-//        val jsonObject =JSONObject(json)
-//        val name = jsonObject.getString("name")
-//        Log.i("MainActivity.json",name)
-//        val phNumber = jsonObject.getInt("phno")
-//        Log.i("MainActivity.json",phNumber.toString()))
-
-        btnSearch.setOnClickListener {
-            val cityName = etCityName.text.toString()
-            executeNetworkCall(cityName)
-        }
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun getLocation() {
-        val locationManager =
-            this@MainActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-        Log.i("MainActivity.OnCreate", location?.latitude.toString())
-        executeNetworkCall(
-            latitude = location?.latitude.toString(),
-            longitude = location?.longitude.toString()
-        )
     }
 
     private fun executeNetworkCall(
         latitude: String,
         longitude: String
     ) {
-//        val httpUrl =
-//            HttpUrl.Builder().scheme("https").host("api.openweathermap.org").addPathSegment("data")
-//                .addPathSegment("2.5").addPathSegment("weather").addQueryParameter("lat", "16.8409")
-//                .addQueryParameter("lon","96.1735").addQueryParameter("appid", API_KEY).build()
-
         showLoading()
         val openWeatherMapApi = retrofit.create(OpenWeatherMapApi::class.java)
         openWeatherMapApi.geoCoordinate(
-            latitude = "16.8409",
-            longitude = "96.1735",
-            appId = API_KEY,
-            units = "metric"
+            latitude = "16.871311",
+            longitude = "96.199379"
         ).enqueue(object : retrofit2.Callback<OpenWeatherMapResponse> {
             override fun onFailure(call: retrofit2.Call<OpenWeatherMapResponse>, t: Throwable) {
-                t.printStackTrace()
+                showError()
             }
 
             override fun onResponse(
@@ -148,35 +125,12 @@ class MainActivity : AppCompatActivity() {
                             weatherIcon = fullURL
                         )
                     }
+                } else {
+                    showError()
                 }
             }
 
         })
-
-//        val client = OkHttpClient()
-//        val request = Request.Builder().url(httpUrl).build()
-//        client.newCall(request).enqueue(object:Callback{
-//            override fun onFailure(call: Call, e: IOException) {
-//                e.printStackTrace()
-//                Log.i("onResponse", e.printStackTrace().toString())
-//            }
-//
-//            override fun onResponse(call: Call, response: Response) {
-//                if(response.isSuccessful){
-//                    response?.body?.let { responseBody ->
-//                        val jsonString=responseBody.string()
-//                        val moshi = Moshi.Builder().build()
-//                        val adapter = moshi.adapter(OpenWeatherMapResponse::class.java)
-//                        val openWeatherResponse = adapter.fromJson(jsonString)
-//                        Log.i("onResponse", openWeatherResponse.toString())
-//
-//                    }
-//
-//                }else{
-//                    Log.i("onResponse", "Response Fail")
-//                }
-//            }
-//        })
     }
 
     private fun executeNetworkCall(
@@ -185,12 +139,11 @@ class MainActivity : AppCompatActivity() {
         showLoading()
         val openWeatherMapApi = retrofit.create(OpenWeatherMapApi::class.java)
         openWeatherMapApi.getByCityName(
-            q = cityName,
-            appId = API_KEY,
-            units = "metric"
+            q = cityName
         ).enqueue(object : retrofit2.Callback<OpenWeatherMapResponse> {
             override fun onFailure(call: retrofit2.Call<OpenWeatherMapResponse>, t: Throwable) {
                 t.printStackTrace()
+                showError()
             }
 
             override fun onResponse(
@@ -208,6 +161,8 @@ class MainActivity : AppCompatActivity() {
                             weatherIcon = fullURL
                         )
                     }
+                } else {
+                    showError()
                 }
             }
 
@@ -235,6 +190,10 @@ class MainActivity : AppCompatActivity() {
         tvTemperature.visibility = View.GONE
         ivWeatherStatus.visibility = View.GONE
         btnSearch.visibility = View.GONE
+
+        tvError.visibility = View.GONE
+        btnReset.visibility = View.GONE
+        tvShowCityName.visibility = View.GONE
     }
 
     private fun showData(
@@ -244,12 +203,28 @@ class MainActivity : AppCompatActivity() {
     ) {
         tvTemperature.text = "$temperature°C"
         etCityName.setText(cityName)
+        tvShowCityName.text = cityName
         Glide.with(this).load(weatherIcon).into(ivWeatherStatus)
 
         progressBar.visibility = View.GONE
+        tvError.visibility = View.GONE
+        btnReset.visibility = View.GONE
         etCityName.visibility = View.VISIBLE
         tvTemperature.visibility = View.VISIBLE
+        tvShowCityName.visibility = View.VISIBLE
         ivWeatherStatus.visibility = View.VISIBLE
         btnSearch.visibility = View.VISIBLE
+    }
+
+    private fun showError() {
+        progressBar.visibility = View.GONE
+        etCityName.visibility = View.GONE
+        tvShowCityName.visibility = View.GONE
+        tvTemperature.visibility = View.GONE
+        ivWeatherStatus.visibility = View.GONE
+        btnSearch.visibility = View.GONE
+
+        tvError.visibility = View.VISIBLE
+        btnReset.visibility = View.VISIBLE
     }
 }
