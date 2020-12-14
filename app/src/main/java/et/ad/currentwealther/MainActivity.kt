@@ -2,6 +2,7 @@ package et.ad.currentwealther
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
@@ -56,6 +57,9 @@ class MainActivity : AppCompatActivity() {
     private val tvShowCityName by lazy {
         findViewById<TextView>(R.id.tvCityName)
     }
+    private val tvWeeklyReport by lazy {
+        findViewById<TextView>(R.id.tvWeeklyReport)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +71,10 @@ class MainActivity : AppCompatActivity() {
         }
         btnReset.setOnClickListener {
             getLocation()
+        }
+        tvWeeklyReport.setOnClickListener{
+            val intent = Intent(applicationContext,WeeklyReportActivity::class.java)
+            startActivity(intent)
         }
 
         getLocation()
@@ -194,6 +202,7 @@ class MainActivity : AppCompatActivity() {
         tvError.visibility = View.GONE
         btnReset.visibility = View.GONE
         tvShowCityName.visibility = View.GONE
+        tvWeeklyReport.visibility = View.GONE
     }
 
     private fun showData(
@@ -213,6 +222,7 @@ class MainActivity : AppCompatActivity() {
         tvTemperature.visibility = View.VISIBLE
         tvShowCityName.visibility = View.VISIBLE
         ivWeatherStatus.visibility = View.VISIBLE
+        tvWeeklyReport.visibility = View.VISIBLE
         btnSearch.visibility = View.VISIBLE
     }
 
@@ -223,6 +233,7 @@ class MainActivity : AppCompatActivity() {
         tvTemperature.visibility = View.GONE
         ivWeatherStatus.visibility = View.GONE
         btnSearch.visibility = View.GONE
+        tvWeeklyReport.visibility = View.GONE
 
         tvError.visibility = View.VISIBLE
         btnReset.visibility = View.VISIBLE

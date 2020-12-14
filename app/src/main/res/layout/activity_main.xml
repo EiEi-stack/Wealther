@@ -24,6 +24,18 @@
         android:layout_centerInParent="true"
         android:fontFamily="sans-serif-medium"
         app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tvWeeklyReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="See Weekly Report"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:textColor="@color/colorPrimary"
+        android:layout_centerInParent="true"
+        android:fontFamily="sans-serif-medium"
+        android:layout_below="@id/tvTemperature"/>
     <ImageView
         android:id="@+id/ivWeatherStatus"
         android:layout_width="wrap_content"
