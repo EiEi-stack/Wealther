@@ -15,4 +15,9 @@ interface OpenWeatherMapApi {
     fun getByCityName(
         @Query("q") q:String
     ):Call<OpenWeatherMapResponse>
-}
+
+    @GET("forecast")
+    fun getWeeklyReport(
+        @Query("q") q: String
+    ):Call<OpenWeatherMapWeeklyResponse>
+    }

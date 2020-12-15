@@ -11,6 +11,8 @@ data class OpenWeatherMapResponse(
     val main: OpenWeatherMapResponseMain,
     @Json(name = "name")
     val name: String
+//    @Json(name = "dt_txt")
+//    val dt_txt: String
 )
 
 @JsonClass(generateAdapter = true)

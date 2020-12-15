@@ -10,6 +10,7 @@
         android:background="@color/colorPrimaryDark">
 
         <TextView
+            android:id="@+id/tvWeeklyCityName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -34,243 +35,273 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/tvWeeklyTodayDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="MONDAY"
-                    android:textSize="25sp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="MONDAY"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="sans-serif-medium"/>
+                    android:textSize="25sp" />
+
                 <TextView
+                    android:id="@+id/tvWeeklyTodayTemp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="25°C"
-                    android:textSize="45sp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="4dp"
-                    android:textColor="@color/colorPrimary"
                     android:fontFamily="sans-serif-medium"
-                    android:textStyle="bold"/>
+                    android:text="25°C"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="45sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
             <ImageView
+                android:id="@+id/ivWeeklyTodayPic"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_gravity="end"
-                android:src="@drawable/cloud"
-                android:layout_marginLeft="100dp"/>
+                android:layout_marginLeft="100dp"
+                android:src="@drawable/cloud" />
 
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/bg_style"
         android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp">
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/bg_style"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TUE"
-            android:textColor="@color/colorPrimary"
-            android:textSize="25sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:fontFamily="sans-serif-medium"/>
+            android:fontFamily="sans-serif-medium"
+            android:text="TUE"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="25°C"
-            android:textColor="@color/colorPrimary"
-            android:textSize="30sp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="15dp"
             android:fontFamily="sans-serif-medium"
-            android:textStyle="bold"/>
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/cloud"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="65dp"/>
+            android:text="25°C"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/cloud" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/bg_style"
         android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp">
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/bg_style"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TUE"
-            android:textColor="@color/colorPrimary"
-            android:textSize="25sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:fontFamily="sans-serif-medium"/>
+            android:fontFamily="sans-serif-medium"
+            android:text="TUE"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="25°C"
-            android:textColor="@color/colorPrimary"
-            android:textSize="30sp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="15dp"
             android:fontFamily="sans-serif-medium"
-            android:textStyle="bold"/>
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/cloud"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="65dp"/>
+            android:text="25°C"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/cloud" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/bg_style"
         android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp">
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/bg_style"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TUE"
-            android:textColor="@color/colorPrimary"
-            android:textSize="25sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:fontFamily="sans-serif-medium"/>
+            android:fontFamily="sans-serif-medium"
+            android:text="TUE"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="25°C"
-            android:textColor="@color/colorPrimary"
-            android:textSize="30sp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="15dp"
             android:fontFamily="sans-serif-medium"
-            android:textStyle="bold"/>
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/cloud"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="65dp"/>
+            android:text="25°C"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/cloud" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/bg_style"
         android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp">
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/bg_style"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TUE"
-            android:textColor="@color/colorPrimary"
-            android:textSize="25sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:fontFamily="sans-serif-medium"/>
+            android:fontFamily="sans-serif-medium"
+            android:text="TUE"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="25°C"
-            android:textColor="@color/colorPrimary"
-            android:textSize="30sp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="15dp"
             android:fontFamily="sans-serif-medium"
-            android:textStyle="bold"/>
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/cloud"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="65dp"/>
+            android:text="25°C"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/cloud" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/bg_style"
         android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp">
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/bg_style"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TUE"
-            android:textColor="@color/colorPrimary"
-            android:textSize="25sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:fontFamily="sans-serif-medium"/>
+            android:fontFamily="sans-serif-medium"
+            android:text="TUE"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="25°C"
-            android:textColor="@color/colorPrimary"
-            android:textSize="30sp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="15dp"
             android:fontFamily="sans-serif-medium"
-            android:textStyle="bold"/>
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/cloud"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="65dp"/>
+            android:text="25°C"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/cloud" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/bg_style"
         android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp">
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/bg_style"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TUE"
-            android:textColor="@color/colorPrimary"
-            android:textSize="25sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:fontFamily="sans-serif-medium"/>
+            android:fontFamily="sans-serif-medium"
+            android:text="TUE"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="25°C"
-            android:textColor="@color/colorPrimary"
-            android:textSize="30sp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="15dp"
             android:fontFamily="sans-serif-medium"
-            android:textStyle="bold"/>
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/cloud"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="65dp"/>
+            android:text="25°C"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/cloud" />
 
     </LinearLayout>
 
