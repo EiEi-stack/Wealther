@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         private const val RESULT_CODE_PERMISSION = 100
     }
 
+    lateinit var cityName: String
     private val progressBar by lazy {
         findViewById<ProgressBar>(R.id.progressBar)
     }
@@ -61,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tvWeeklyReport)
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -72,8 +74,9 @@ class MainActivity : AppCompatActivity() {
         btnReset.setOnClickListener {
             getLocation()
         }
-        tvWeeklyReport.setOnClickListener{
-            val intent = Intent(applicationContext,WeeklyReportActivity::class.java)
+        tvWeeklyReport.setOnClickListener {
+            val intent = Intent(applicationContext, WeeklyReportActivity::class.java)
+            intent.putExtra("cityName", cityName!!)
             startActivity(intent)
         }
 
@@ -127,6 +130,7 @@ class MainActivity : AppCompatActivity() {
                         Log.i("onResponse", openWeatherMapResponse.toString())
                         val iconUrl = openWeatherMapResponse.weatherList.getOrNull(0)?.icon ?: ""
                         val fullURL = "https://openweathermap.org/img/wn/$iconUrl@2x.png"
+                        cityName = openWeatherMapResponse.name
                         showData(
                             temperature = openWeatherMapResponse.main.temp,
                             cityName = openWeatherMapResponse.name,
@@ -163,6 +167,7 @@ class MainActivity : AppCompatActivity() {
                         Log.i("onResponse", openWeatherMapResponse.toString())
                         val iconUrl = openWeatherMapResponse.weatherList.getOrNull(0)?.icon ?: ""
                         val fullURL = "https://openweathermap.org/img/wn/$iconUrl@2x.png"
+                        this@MainActivity.cityName = openWeatherMapResponse.name
                         showData(
                             temperature = openWeatherMapResponse.main.temp,
                             cityName = openWeatherMapResponse.name,

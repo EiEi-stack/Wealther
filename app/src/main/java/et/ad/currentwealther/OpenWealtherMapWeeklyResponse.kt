@@ -7,7 +7,9 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class OpenWeatherMapWeeklyResponse(
 @Json(name="list")
-val weatherAllList: List<OpenWeatherMapWeeklyResponseList>
+val weatherAllList: List<OpenWeatherMapWeeklyResponseList>,
+@Json(name="city")
+val city: OpenWeatherMapWeeklyResponseCity
 )
 
 
@@ -17,8 +19,6 @@ data class OpenWeatherMapWeeklyResponseList(
     val weatherList: List<OpenWeatherMapWeeklyResponseWeather>,
     @Json(name = "main")
     val main: OpenWeatherMapWeeklyResponseMain,
-    @Json(name = "name")
-    val name: String,
     @Json(name = "dt_txt")
     val dt_txt: String
 )
@@ -32,4 +32,9 @@ data class OpenWeatherMapWeeklyResponseWeather(
 data class OpenWeatherMapWeeklyResponseMain(
     @Json(name = "temp")
     val temp: String
+)
+@JsonClass(generateAdapter = true)
+data class OpenWeatherMapWeeklyResponseCity(
+    @Json(name = "name")
+    val name: String
 )
