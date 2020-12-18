@@ -28,7 +28,7 @@
         android:id="@+id/tvWeeklyReport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="See Weekly Report"
+        android:text="@string/see_weekly_report"
         android:textSize="24sp"
         android:textStyle="bold"
         android:visibility="gone"
@@ -53,6 +53,7 @@
         android:layout_centerHorizontal="true"
         android:visibility="gone"
         android:layout_marginTop="16dp"
+        android:singleLine="true"
         android:textColor="@color/colorPrimaryDark"
         android:text="Yangon"/>
 
@@ -74,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignBaseline="@id/etCityName"
-        android:text="Search"
+        android:text="@string/search"
         android:visibility="gone"
         android:textColor="@color/colorPrimary"
         android:background="@drawable/btn_style"
@@ -86,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:text="Error Loading Data"/>
+        android:text="@string/error_loading_data"/>
 
     <Button
         android:id="@+id/btnReset"
@@ -95,7 +96,7 @@
         android:layout_centerInParent="true"
         android:layout_below="@id/tvError"
         android:visibility="gone"
-        android:text="Reset"
+        android:text="@string/reset"
         android:textAllCaps="false"/>
 
 </RelativeLayout>

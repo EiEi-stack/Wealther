@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CurrentWealther</string>
+    <string name="search">検索</string>
+    <string name="see_weekly_report">週間天気を見る</string>
+    <string name="error_loading_data">データー習得エラー</string>
+    <string name="reset">リセット</string>
 </resources>

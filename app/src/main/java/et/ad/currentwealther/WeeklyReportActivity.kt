@@ -131,8 +131,9 @@ class WeeklyReportActivity : AppCompatActivity() {
                     response.body()?.let { openWeatherMapWeeklyResponse ->
                         Log.i("onResponse", openWeatherMapWeeklyResponse.toString())
                         tvWeeklyCityName.text = openWeatherMapWeeklyResponse.city.name
+                        val tdyTemp =openWeatherMapWeeklyResponse.weatherAllList.getOrNull(0)?.main?.temp
                         tvWeeklyTodayTemp.text =
-                            openWeatherMapWeeklyResponse.weatherAllList.getOrNull(0)?.main?.temp
+                            "$tdyTemp°C"
                         tvWeeklyTodayDate.text =
                             openWeatherMapWeeklyResponse.weatherAllList.getOrNull(0)!!.dt_txt
                         val iconUrl =
@@ -142,70 +143,76 @@ class WeeklyReportActivity : AppCompatActivity() {
                         val fullURL = "https://openweathermap.org/img/wn/$iconUrl@2x.png"
                         Glide.with(this@WeeklyReportActivity).load(fullURL).into(ivWeeklyTodayPic)
 
+                        val tempOne=openWeatherMapWeeklyResponse.weatherAllList.getOrNull(1)?.main?.temp
                         tvWeeklyTempOne.text =
-                            openWeatherMapWeeklyResponse.weatherAllList.getOrNull(1)?.main?.temp
+                            "$tempOne°C"
                         tvWeeklyDateOne.text =
                             openWeatherMapWeeklyResponse.weatherAllList.getOrNull(1)!!.dt_txt
                         val iconUrlOne =
                             openWeatherMapWeeklyResponse.weatherAllList.getOrNull(1)?.weatherList?.getOrNull(
-                                1
+                                0
                             )?.icon ?: ""
                         val fullURLOne = "https://openweathermap.org/img/wn/$iconUrlOne@2x.png"
                         Glide.with(this@WeeklyReportActivity).load(fullURLOne).into(ivWeeklyPicOne)
 
+                        val tempTwo=openWeatherMapWeeklyResponse.weatherAllList.getOrNull(2)?.main?.temp
                         tvWeeklyTempTwo.text =
-                            openWeatherMapWeeklyResponse.weatherAllList.getOrNull(2)?.main?.temp
+                            "$tempTwo°C"
                         tvWeeklyDateTwo.text =
                             openWeatherMapWeeklyResponse.weatherAllList.getOrNull(2)!!.dt_txt
                         val iconUrlTwo =
                             openWeatherMapWeeklyResponse.weatherAllList.getOrNull(2)?.weatherList?.getOrNull(
-                                2
+                                0
                             )?.icon ?: ""
                         val fullURLTwo = "https://openweathermap.org/img/wn/$iconUrlTwo@2x.png"
                         Glide.with(this@WeeklyReportActivity).load(fullURLTwo).into(ivWeeklyPicTwo)
 
+                        val tempThree=openWeatherMapWeeklyResponse.weatherAllList.getOrNull(3)?.main?.temp
                         tvWeeklyTempThree.text =
-                            openWeatherMapWeeklyResponse.weatherAllList.getOrNull(3)?.main?.temp
+                            "$tempThree°C"
                         tvWeeklyDateThree.text =
                             openWeatherMapWeeklyResponse.weatherAllList.getOrNull(3)!!.dt_txt
                         val iconUrlThree =
                             openWeatherMapWeeklyResponse.weatherAllList.getOrNull(3)?.weatherList?.getOrNull(
-                                3
+                                0
                             )?.icon ?: ""
                         val fullURLThree = "https://openweathermap.org/img/wn/$iconUrlThree@2x.png"
                         Glide.with(this@WeeklyReportActivity).load(fullURLThree).into(ivWeeklyPicThree)
 
+                        val tempFour =openWeatherMapWeeklyResponse.weatherAllList.getOrNull(4)?.main?.temp
                         tvWeeklyTempFour.text =
-                            openWeatherMapWeeklyResponse.weatherAllList.getOrNull(4)?.main?.temp
+                            "$tempFour°C"
                         tvWeeklyDateFour.text =
                             openWeatherMapWeeklyResponse.weatherAllList.getOrNull(4)!!.dt_txt
                         val iconUrlFour =
                             openWeatherMapWeeklyResponse.weatherAllList.getOrNull(4)?.weatherList?.getOrNull(
-                                4
+                                0
                             )?.icon ?: ""
                         val fullURLFour = "https://openweathermap.org/img/wn/$iconUrlFour@2x.png"
                         Glide.with(this@WeeklyReportActivity).load(fullURLFour).into(ivWeeklyPicFour)
 
+                        val tempFive=openWeatherMapWeeklyResponse.weatherAllList.getOrNull(5)?.main?.temp
                         tvWeeklyTempFive.text =
-                            openWeatherMapWeeklyResponse.weatherAllList.getOrNull(5)?.main?.temp
+                            "$tempFive°C"
                         tvWeeklyDateFive.text =
                             openWeatherMapWeeklyResponse.weatherAllList.getOrNull(5)!!.dt_txt
                         val iconUrlFive =
                             openWeatherMapWeeklyResponse.weatherAllList.getOrNull(5)?.weatherList?.getOrNull(
-                                5
+                                0
                             )?.icon ?: ""
                         val fullURLFive = "https://openweathermap.org/img/wn/$iconUrlFive@2x.png"
                         Glide.with(this@WeeklyReportActivity).load(fullURLFive).into(ivWeeklyPicFive)
 
+                        val tempSix=openWeatherMapWeeklyResponse.weatherAllList.getOrNull(6)?.main?.temp
                         tvWeeklyTempSix.text =
-                            openWeatherMapWeeklyResponse.weatherAllList.getOrNull(6)?.main?.temp
+                            "$tempSix°C"
                         tvWeeklyDateSix.text =
                             openWeatherMapWeeklyResponse.weatherAllList.getOrNull(6)!!.dt_txt
                         val iconUrlSix =
                             openWeatherMapWeeklyResponse.weatherAllList.getOrNull(6)?.weatherList?.getOrNull(
-                                6
+                                0
                             )?.icon ?: ""
-                        val fullURLSix = "https://openweathermap.org/img/wn/$iconUrlFive@2x.png"
+                        val fullURLSix = "https://openweathermap.org/img/wn/$iconUrlSix@2x.png"
                         Glide.with(this@WeeklyReportActivity).load(fullURLSix).into(ivWeeklyPicSix)
                     }
                 }

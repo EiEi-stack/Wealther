@@ -112,7 +112,9 @@ class MainActivity : AppCompatActivity() {
         longitude: String
     ) {
         showLoading()
+
         val openWeatherMapApi = retrofit.create(OpenWeatherMapApi::class.java)
+
         openWeatherMapApi.geoCoordinate(
             latitude = "16.871311",
             longitude = "96.199379"
