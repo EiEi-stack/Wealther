@@ -4,26 +4,19 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Criteria
+import android.location.Location
+import android.location.LocationListener
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.PermissionToken
-import com.karumi.dexter.listener.PermissionDeniedResponse
-import com.karumi.dexter.listener.PermissionGrantedResponse
-import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.single.PermissionListener
-import okhttp3.*
-import org.w3c.dom.Text
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
-import java.util.jar.Manifest
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -31,6 +24,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     lateinit var cityName: String
+    lateinit var locationManager: LocationManager
+    var locationGps: Location? = null
+    var locationNetwork: Location? = null
+    var latlongLocation: Location? = null
+    var hasGPS: Boolean = false
+    var hasNetwork: Boolean = false
+
     private val progressBar by lazy {
         findViewById<ProgressBar>(R.id.progressBar)
     }
@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity() {
     private val tvWeeklyReport by lazy {
         findViewById<TextView>(R.id.tvWeeklyReport)
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,16 +94,116 @@ class MainActivity : AppCompatActivity() {
                 arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), RESULT_CODE_PERMISSION
             )
         } else {
-            val locationManager =
-                this@MainActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            val location =
-                locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-            Log.i("MainActivity.OnCreate", location?.latitude.toString())
-            executeNetworkCall(
-                latitude = location?.latitude.toString(),
-                longitude = location?.longitude.toString()
-            )
+            val localLatLong = getLocationLatLon()
+            if (localLatLong != null) {
+
+                executeNetworkCall(
+                    latitude = localLatLong.latitude.toString(),
+                    longitude = localLatLong.longitude.toString()
+                )
+            }
+
         }
+    }
+
+    @SuppressLint("MissingPermission")
+    fun getLocationLatLon(): Location? {
+        locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        hasGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+        hasNetwork = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+        if (hasGPS || hasNetwork) {
+
+            if (hasGPS) {
+                Log.d("AndroidLocation", "hasGps")
+                locationManager.requestLocationUpdates(
+                    LocationManager.GPS_PROVIDER,
+                    5000,
+                    0F,
+                    object : LocationListener {
+                        override fun onLocationChanged(location: Location?) {
+                            if (location != null) {
+                                locationGps = location
+                            }
+                        }
+
+                        override fun onStatusChanged(
+                            provider: String?,
+                            status: Int,
+                            extras: Bundle?
+                        ) {
+                            TODO("Not yet implemented")
+                        }
+
+                        override fun onProviderEnabled(provider: String?) {
+                            TODO("Not yet implemented")
+                        }
+
+                        override fun onProviderDisabled(provider: String?) {
+                            TODO("Not yet implemented")
+                        }
+
+                    })
+
+                val localGpsLocation =
+                    locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                if (localGpsLocation != null) {
+                    locationGps = localGpsLocation
+                }
+            }
+
+            if (hasNetwork) {
+                Log.d("AndroidLocation", "hasGps")
+                locationManager.requestLocationUpdates(
+                    LocationManager.NETWORK_PROVIDER,
+                    5000,
+                    0F,
+                    object : LocationListener {
+                        override fun onLocationChanged(location: Location?) {
+                            if (location != null) {
+                                locationNetwork = location
+                            }
+                        }
+
+                        override fun onStatusChanged(
+                            provider: String?,
+                            status: Int,
+                            extras: Bundle?
+                        ) {
+                            TODO("Not yet implemented")
+                        }
+
+                        override fun onProviderEnabled(provider: String?) {
+                            TODO("Not yet implemented")
+                        }
+
+                        override fun onProviderDisabled(provider: String?) {
+                            TODO("Not yet implemented")
+                        }
+
+                    })
+
+                val localNetworkLocation =
+                    locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                if (localNetworkLocation != null) {
+                    locationNetwork = localNetworkLocation
+                }
+                if (locationGps != null && locationNetwork != null) {
+                    if (locationGps!!.accuracy > locationNetwork!!.accuracy) {
+                        Log.d("AndroidLocation", "Network latitude" + locationNetwork!!.latitude)
+                        Log.d("AndroidLocation", "Network latitude" + locationNetwork!!.longitude)
+                        latlongLocation = locationNetwork
+                    } else {
+                        Log.d("AndroidLocation", "GPS latitude" + locationGps!!.latitude)
+                        Log.d("AndroidLocation", "GPS latitude" + locationGps!!.longitude)
+                        latlongLocation = locationGps
+                    }
+                }
+            }
+        } else {
+            startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+        }
+        return latlongLocation
+
     }
 
     private fun executeNetworkCall(
@@ -116,8 +215,8 @@ class MainActivity : AppCompatActivity() {
         val openWeatherMapApi = retrofit.create(OpenWeatherMapApi::class.java)
 
         openWeatherMapApi.geoCoordinate(
-            latitude = "16.871311",
-            longitude = "96.199379"
+            latitude = latitude,
+            longitude = longitude
         ).enqueue(object : retrofit2.Callback<OpenWeatherMapResponse> {
             override fun onFailure(call: retrofit2.Call<OpenWeatherMapResponse>, t: Throwable) {
                 showError()
