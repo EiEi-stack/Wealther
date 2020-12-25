@@ -39,10 +39,6 @@ class WeeklyWeatherActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.ivWeeklyTodayPic)
     }
 
-//    private val tvWeeklyTempMinOne by lazy {
-//        findViewById<TextView>(R.id.tvWeeklyTempMinOne)
-//    }
-
     private val tvWeeklyTempMaxOne by lazy {
         findViewById<TextView>(R.id.tvWeeklyTempMaxOne)
     }
@@ -55,9 +51,6 @@ class WeeklyWeatherActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.ivWeeklyPicOne)
     }
 
-//    private val tvWeeklyTempMinTwo by lazy {
-//        findViewById<TextView>(R.id.tvWeeklyTempMinTwo)
-//    }
     private val tvWeeklyTempMaxTwo by lazy {
         findViewById<TextView>(R.id.tvWeeklyTempMaxTwo)
     }
@@ -69,10 +62,6 @@ class WeeklyWeatherActivity : AppCompatActivity() {
     private val ivWeeklyPicTwo by lazy {
         findViewById<ImageView>(R.id.ivWeeklyPicTwo)
     }
-
-//    private val tvWeeklyTempMinThree by lazy {
-//        findViewById<TextView>(R.id.tvWeeklyTempMinThree)
-//    }
 
     private val tvWeeklyTempMaxThree by lazy {
         findViewById<TextView>(R.id.tvWeeklyTempMaxThree)
@@ -86,10 +75,6 @@ class WeeklyWeatherActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.ivWeeklyPicThree)
     }
 
-//    private val tvWeeklyTempMinFour by lazy {
-//        findViewById<TextView>(R.id.tvWeeklyTempMinFour)
-//    }
-
     private val tvWeeklyTempMaxFour by lazy {
         findViewById<TextView>(R.id.tvWeeklyTempMaxFour)
     }
@@ -102,10 +87,6 @@ class WeeklyWeatherActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.ivWeeklyPicFour)
     }
 
-//    private val tvWeeklyTempMinFive by lazy {
-//        findViewById<TextView>(R.id.tvWeeklyTempMinFive)
-//    }
-
     private val tvWeeklyTempMaxFive by lazy {
         findViewById<TextView>(R.id.tvWeeklyTempMaxFive)
     }
@@ -117,10 +98,6 @@ class WeeklyWeatherActivity : AppCompatActivity() {
     private val ivWeeklyPicFive by lazy {
         findViewById<ImageView>(R.id.ivWeeklyPicFive)
     }
-
-//    private val tvWeeklyTempMinSix by lazy {
-//        findViewById<TextView>(R.id.tvWeeklyTempMinSix)
-//    }
 
     private val tvWeeklyTempMaxSix by lazy {
         findViewById<TextView>(R.id.tvWeeklyTempMaxSix)
@@ -194,9 +171,6 @@ class WeeklyWeatherActivity : AppCompatActivity() {
         val tempMax = oneCallWeatherMapResponse.dailyList[6].temp.max
         val bigDecimalMax = BigDecimal(tempMax).toBigInteger()
         tvWeeklyTempMaxSix.text = "$bigDecimalMax℃"
-        val tempMin = oneCallWeatherMapResponse.dailyList[6].temp.min
-        val bigDecimalMin = BigDecimal(tempMax).toBigInteger()
-//        tvWeeklyTempMinSix.text = "$bigDecimalMin℃"
 
         val unixSeconds= oneCallWeatherMapResponse.dailyList[6].dt
         val sdf= SimpleDateFormat("dd(E)",Locale.JAPAN)
@@ -212,9 +186,6 @@ class WeeklyWeatherActivity : AppCompatActivity() {
         val tempMax = oneCallWeatherMapResponse.dailyList[5].temp.max
         val bigDecimalMax = BigDecimal(tempMax).toBigInteger()
         tvWeeklyTempMaxFive.text = "$bigDecimalMax℃"
-        val tempMin = oneCallWeatherMapResponse.dailyList[5].temp.min
-        val bigDecimalMin = BigDecimal(tempMax).toBigInteger()
-//        tvWeeklyTempMinFive.text = "$bigDecimalMin℃"
 
         val unixSeconds= oneCallWeatherMapResponse.dailyList[5].dt
         val sdf= SimpleDateFormat("dd(E)",Locale.JAPAN)
@@ -230,9 +201,6 @@ class WeeklyWeatherActivity : AppCompatActivity() {
         val tempMax = oneCallWeatherMapResponse.dailyList[4].temp.max
         val bigDecimalMax = BigDecimal(tempMax).toBigInteger()
         tvWeeklyTempMaxFour.text = "$bigDecimalMax℃"
-        val tempMin = oneCallWeatherMapResponse.dailyList[4].temp.min
-        val bigDecimalMin = BigDecimal(tempMax).toBigInteger()
-//        tvWeeklyTempMinFour.text = "$bigDecimalMin℃"
 
         val unixSeconds= oneCallWeatherMapResponse.dailyList[4].dt
         val sdf= SimpleDateFormat("dd(E)",Locale.JAPAN)
@@ -248,9 +216,6 @@ class WeeklyWeatherActivity : AppCompatActivity() {
         val tempMax = oneCallWeatherMapResponse.dailyList[3].temp.max
         val bigDecimalMax = BigDecimal(tempMax).toBigInteger()
         tvWeeklyTempMaxThree.text = "$bigDecimalMax℃"
-        val tempMin = oneCallWeatherMapResponse.dailyList[3].temp.min
-        val bigDecimalMin = BigDecimal(tempMax).toBigInteger()
-//        tvWeeklyTempMinThree.text = "$bigDecimalMin℃"
 
         val unixSeconds= oneCallWeatherMapResponse.dailyList[3].dt
         val sdf= SimpleDateFormat("dd(E)",Locale.JAPAN)
@@ -266,9 +231,6 @@ class WeeklyWeatherActivity : AppCompatActivity() {
         val tempMax = oneCallWeatherMapResponse.dailyList[2].temp.max
         val bigDecimalMax = BigDecimal(tempMax).toBigInteger()
         tvWeeklyTempMaxTwo.text = "$bigDecimalMax℃"
-        val tempMin = oneCallWeatherMapResponse.dailyList[2].temp.min
-        val bigDecimalMin = BigDecimal(tempMax).toBigInteger()
-//        tvWeeklyTempMinTwo.text = "$bigDecimalMin℃"
 
         val unixSeconds= oneCallWeatherMapResponse.dailyList[2].dt
         val sdf= SimpleDateFormat("dd(E)",Locale.JAPAN)
@@ -284,9 +246,6 @@ class WeeklyWeatherActivity : AppCompatActivity() {
         val tempMax = oneCallWeatherMapResponse.dailyList[1].temp.max
         val bigDecimalMax = BigDecimal(tempMax).toBigInteger()
         tvWeeklyTempMaxOne.text = "$bigDecimalMax℃"
-        val tempMin = oneCallWeatherMapResponse.dailyList[1].temp.min
-        val bigDecimalMin = BigDecimal(tempMax).toBigInteger()
-//        tvWeeklyTempMinOne.text = "$bigDecimalMin℃"
 
         val unixSeconds= oneCallWeatherMapResponse.dailyList[1].dt
         val sdf= SimpleDateFormat("dd(E)",Locale.JAPAN)

@@ -24,7 +24,9 @@ class MainActivity : AppCompatActivity() {
         private const val RESULT_CODE_PERMISSION = 100
     }
 
-    lateinit var cityName: String
+    lateinit var cityNameIntent: String
+    lateinit var latitudeIntent: String
+    lateinit var longitudeIntent: String
     lateinit var locationManager: LocationManager
     var locationGps: Location? = null
     var locationNetwork: Location? = null
@@ -77,11 +79,11 @@ class MainActivity : AppCompatActivity() {
         tvWeeklyReport.setOnClickListener {
             val intent = Intent(applicationContext, WeeklyWeatherActivity::class.java)
             val intentLatLong = getLocationLatLon()
-            val mLatitude = intentLatLong!!.latitude.toString()
-            val mLongitude = intentLatLong!!.longitude.toString()
-            intent.putExtra("locLatitude", mLatitude!!)
-            intent.putExtra("locLongitude", mLongitude!!)
-            intent.putExtra("cityName", cityName!!)
+            latitudeIntent = intentLatLong!!.latitude.toString()
+            longitudeIntent = intentLatLong!!.longitude.toString()
+            intent.putExtra("locLatitude", latitudeIntent!!)
+            intent.putExtra("locLongitude", longitudeIntent!!)
+            intent.putExtra("cityName", cityNameIntent!!)
             startActivity(intent)
         }
 
@@ -236,7 +238,9 @@ class MainActivity : AppCompatActivity() {
                         Log.i("onResponse", openWeatherMapResponse.toString())
                         val iconUrl = openWeatherMapResponse.weatherList.getOrNull(0)?.icon ?: ""
                         val fullURL = "https://openweathermap.org/img/wn/$iconUrl@2x.png"
-                        cityName = openWeatherMapResponse.name
+                        cityNameIntent = openWeatherMapResponse.name
+                        latitudeIntent = openWeatherMapResponse.coord.lat.toString()
+                        longitudeIntent = openWeatherMapResponse.coord.lon.toString()
                         showData(
                             temperature = openWeatherMapResponse.main.temp,
                             cityName = openWeatherMapResponse.name,
@@ -273,7 +277,9 @@ class MainActivity : AppCompatActivity() {
                         Log.i("onResponse", openWeatherMapResponse.toString())
                         val iconUrl = openWeatherMapResponse.weatherList.getOrNull(0)?.icon ?: ""
                         val fullURL = "https://openweathermap.org/img/wn/$iconUrl@2x.png"
-                        this@MainActivity.cityName = openWeatherMapResponse.name
+                        cityNameIntent = openWeatherMapResponse.name
+                        latitudeIntent = openWeatherMapResponse.coord.lat.toString()
+                        longitudeIntent = openWeatherMapResponse.coord.lon.toString()
                         showData(
                             temperature = openWeatherMapResponse.main.temp,
                             cityName = openWeatherMapResponse.name,
