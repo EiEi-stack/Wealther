@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var locationManager: LocationManager
     var locationGps: Location? = null
     var locationNetwork: Location? = null
-    var latlongLocation: Location? = null
+    private var latlongLocation: Location? = null
     var hasGPS: Boolean = false
     var hasNetwork: Boolean = false
 
@@ -78,9 +78,11 @@ class MainActivity : AppCompatActivity() {
         }
         tvWeeklyReport.setOnClickListener {
             val intent = Intent(applicationContext, WeeklyWeatherActivity::class.java)
-            val intentLatLong = getLocationLatLon()
-            latitudeIntent = intentLatLong!!.latitude.toString()
-            longitudeIntent = intentLatLong!!.longitude.toString()
+            if (latitudeIntent == "" && longitudeIntent == "") {
+                val intentLatLong = getLocationLatLon()
+                latitudeIntent = intentLatLong!!.latitude.toString()
+                longitudeIntent = intentLatLong!!.longitude.toString()
+            }
             intent.putExtra("locLatitude", latitudeIntent!!)
             intent.putExtra("locLongitude", longitudeIntent!!)
             intent.putExtra("cityName", cityNameIntent!!)
@@ -195,14 +197,14 @@ class MainActivity : AppCompatActivity() {
                     locationNetwork = localNetworkLocation
                 }
                 if (locationGps != null && locationNetwork != null) {
-                    if (locationGps!!.accuracy > locationNetwork!!.accuracy) {
+                    latlongLocation = if (locationGps!!.accuracy > locationNetwork!!.accuracy) {
                         Log.d("AndroidLocation", "Network latitude" + locationNetwork!!.latitude)
                         Log.d("AndroidLocation", "Network latitude" + locationNetwork!!.longitude)
-                        latlongLocation = locationNetwork
+                        locationNetwork
                     } else {
                         Log.d("AndroidLocation", "GPS latitude" + locationGps!!.latitude)
                         Log.d("AndroidLocation", "GPS latitude" + locationGps!!.longitude)
-                        latlongLocation = locationGps
+                        locationGps
                     }
                 }
             }
@@ -239,8 +241,8 @@ class MainActivity : AppCompatActivity() {
                         val iconUrl = openWeatherMapResponse.weatherList.getOrNull(0)?.icon ?: ""
                         val fullURL = "https://openweathermap.org/img/wn/$iconUrl@2x.png"
                         cityNameIntent = openWeatherMapResponse.name
-                        latitudeIntent = openWeatherMapResponse.coord.lat.toString()
-                        longitudeIntent = openWeatherMapResponse.coord.lon.toString()
+                        latitudeIntent = openWeatherMapResponse.coord.lat
+                        longitudeIntent = openWeatherMapResponse.coord.lon
                         showData(
                             temperature = openWeatherMapResponse.main.temp,
                             cityName = openWeatherMapResponse.name,
@@ -278,8 +280,8 @@ class MainActivity : AppCompatActivity() {
                         val iconUrl = openWeatherMapResponse.weatherList.getOrNull(0)?.icon ?: ""
                         val fullURL = "https://openweathermap.org/img/wn/$iconUrl@2x.png"
                         cityNameIntent = openWeatherMapResponse.name
-                        latitudeIntent = openWeatherMapResponse.coord.lat.toString()
-                        longitudeIntent = openWeatherMapResponse.coord.lon.toString()
+                        latitudeIntent = openWeatherMapResponse.coord.lat
+                        longitudeIntent = openWeatherMapResponse.coord.lon
                         showData(
                             temperature = openWeatherMapResponse.main.temp,
                             cityName = openWeatherMapResponse.name,
