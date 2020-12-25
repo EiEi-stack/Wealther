@@ -20,4 +20,10 @@ interface OpenWeatherMapApi {
     fun getWeeklyReport(
         @Query("q") q: String
     ):Call<OpenWeatherMapWeeklyResponse>
+
+    @GET("onecall")
+    fun getWeeklyWeatherReport(
+        @Query("lat") lat: String,
+        @Query("lon") lon: String
+    ):Call<OneCallWeatherMapResponse>
     }

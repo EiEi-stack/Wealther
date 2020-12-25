@@ -17,6 +17,7 @@ import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import java.math.BigDecimal
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -74,7 +75,12 @@ class MainActivity : AppCompatActivity() {
             getLocation()
         }
         tvWeeklyReport.setOnClickListener {
-            val intent = Intent(applicationContext, WeeklyReportActivity::class.java)
+            val intent = Intent(applicationContext, WeeklyWeatherActivity::class.java)
+            val intentLatLong = getLocationLatLon()
+            val mLatitude = intentLatLong!!.latitude.toString()
+            val mLongitude = intentLatLong!!.longitude.toString()
+            intent.putExtra("locLatitude", mLatitude!!)
+            intent.putExtra("locLongitude", mLongitude!!)
             intent.putExtra("cityName", cityName!!)
             startActivity(intent)
         }
@@ -96,7 +102,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             val localLatLong = getLocationLatLon()
             if (localLatLong != null) {
-
                 executeNetworkCall(
                     latitude = localLatLong.latitude.toString(),
                     longitude = localLatLong.longitude.toString()
@@ -316,7 +321,8 @@ class MainActivity : AppCompatActivity() {
         cityName: String,
         weatherIcon: String
     ) {
-        tvTemperature.text = "$temperature°C"
+        val locTemp = BigDecimal(temperature).toBigInteger()
+        tvTemperature.text = "$locTemp°C"
         etCityName.setText(cityName)
         tvShowCityName.text = cityName
         Glide.with(this).load(weatherIcon).into(ivWeatherStatus)

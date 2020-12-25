@@ -4,359 +4,359 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/colorPrimaryDark">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:background="@color/colorPrimaryDark">-->
 
-                <TextView
-                    android:id="@+id/tvWeeklyCityName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="LONDON"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="25sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/tvWeeklyCityName"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:fontFamily="sans-serif-condensed"-->
+<!--                    android:text="LONDON"-->
+<!--                    android:textColor="@color/colorPrimary"-->
+<!--                    android:textSize="25sp" />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:background="@drawable/bg_style">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="190dp"-->
+<!--                android:background="@drawable/bg_style">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
 
-                        <TextView
-                            android:id="@+id/tvWeeklyTodayDate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="20dp"
-                            android:fontFamily="sans-serif-medium"
-                            android:text="MONDAY"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="25sp" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvWeeklyTodayDate"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="20dp"-->
+<!--                            android:layout_marginTop="20dp"-->
+<!--                            android:fontFamily="sans-serif-medium"-->
+<!--                            android:text="MONDAY"-->
+<!--                            android:textColor="@color/colorPrimary"-->
+<!--                            android:textSize="25sp" />-->
 
-                        <TextView
-                            android:id="@+id/tvWeeklyTodayTemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="4dp"
-                            android:fontFamily="sans-serif-medium"
-                            android:text="25°C"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="45sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvWeeklyTodayTemp"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="20dp"-->
+<!--                            android:layout_marginTop="4dp"-->
+<!--                            android:fontFamily="sans-serif-medium"-->
+<!--                            android:text="25°C"-->
+<!--                            android:textColor="@color/colorPrimary"-->
+<!--                            android:textSize="45sp"-->
+<!--                            android:textStyle="bold" />-->
+<!--                    </LinearLayout>-->
 
-                    <ImageView
-                        android:id="@+id/ivWeeklyTodayPic"
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
-                        android:layout_gravity="end"
-                        android:layout_marginLeft="20dp"
-                        android:src="@drawable/cloud" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/ivWeeklyTodayPic"-->
+<!--                        android:layout_width="130dp"-->
+<!--                        android:layout_height="130dp"-->
+<!--                        android:layout_gravity="end"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:src="@drawable/cloud" />-->
 
-                </LinearLayout>
-            </LinearLayout>
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="3dp"
-                android:background="@drawable/bg_style"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="3dp"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginRight="3dp"-->
+<!--                android:background="@drawable/bg_style"-->
+<!--                android:orientation="vertical">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
 
-                    <TextView
-                        android:id="@+id/tvWeeklyDateOne"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="15dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="TUE"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="25sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvWeeklyDateOne"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:text="TUE"-->
+<!--                        android:textColor="@color/colorPrimary"-->
+<!--                        android:textSize="25sp" />-->
 
-                    <ImageView
-                        android:id="@+id/ivWeeklyPicOne"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/cloud" />
-                </LinearLayout>
+<!--                    <ImageView-->
+<!--                        android:id="@+id/ivWeeklyPicOne"-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:src="@drawable/cloud" />-->
+<!--                </LinearLayout>-->
 
-                <TextView
-                    android:id="@+id/tvWeeklyTempOne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="25°C"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/tvWeeklyTempOne"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginBottom="15dp"-->
+<!--                    android:fontFamily="sans-serif-medium"-->
+<!--                    android:text="25°C"-->
+<!--                    android:textColor="@color/colorPrimary"-->
+<!--                    android:textSize="30sp"-->
+<!--                    android:textStyle="bold" />-->
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="3dp"
-                android:background="@drawable/bg_style"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="3dp"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginRight="3dp"-->
+<!--                android:background="@drawable/bg_style"-->
+<!--                android:orientation="vertical">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
 
-                    <TextView
-                        android:id="@+id/tvWeeklyDateTwo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="15dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="TUE"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="25sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvWeeklyDateTwo"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:text="TUE"-->
+<!--                        android:textColor="@color/colorPrimary"-->
+<!--                        android:textSize="25sp" />-->
 
-                    <ImageView
-                        android:id="@+id/ivWeeklyPicTwo"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/cloud" />
-                </LinearLayout>
+<!--                    <ImageView-->
+<!--                        android:id="@+id/ivWeeklyPicTwo"-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:src="@drawable/cloud" />-->
+<!--                </LinearLayout>-->
 
-                <TextView
-                    android:id="@+id/tvWeeklyTempTwo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="25°C"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/tvWeeklyTempTwo"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginBottom="15dp"-->
+<!--                    android:fontFamily="sans-serif-medium"-->
+<!--                    android:text="25°C"-->
+<!--                    android:textColor="@color/colorPrimary"-->
+<!--                    android:textSize="30sp"-->
+<!--                    android:textStyle="bold" />-->
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="3dp"
-                android:background="@drawable/bg_style"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="3dp"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginRight="3dp"-->
+<!--                android:background="@drawable/bg_style"-->
+<!--                android:orientation="vertical">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
 
-                    <TextView
-                        android:id="@+id/tvWeeklyDateThree"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="15dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="TUE"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="25sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvWeeklyDateThree"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:text="TUE"-->
+<!--                        android:textColor="@color/colorPrimary"-->
+<!--                        android:textSize="25sp" />-->
 
-                    <ImageView
-                        android:id="@+id/ivWeeklyPicThree"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/cloud" />
-                </LinearLayout>
+<!--                    <ImageView-->
+<!--                        android:id="@+id/ivWeeklyPicThree"-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:src="@drawable/cloud" />-->
+<!--                </LinearLayout>-->
 
-                <TextView
-                    android:id="@+id/tvWeeklyTempThree"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="25°C"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/tvWeeklyTempThree"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginBottom="15dp"-->
+<!--                    android:fontFamily="sans-serif-medium"-->
+<!--                    android:text="25°C"-->
+<!--                    android:textColor="@color/colorPrimary"-->
+<!--                    android:textSize="30sp"-->
+<!--                    android:textStyle="bold" />-->
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="3dp"
-                android:background="@drawable/bg_style"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="3dp"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginRight="3dp"-->
+<!--                android:background="@drawable/bg_style"-->
+<!--                android:orientation="vertical">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
 
-                    <TextView
-                        android:id="@+id/tvWeeklyDateFour"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="15dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="TUE"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="25sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvWeeklyDateFour"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:text="TUE"-->
+<!--                        android:textColor="@color/colorPrimary"-->
+<!--                        android:textSize="25sp" />-->
 
-                    <ImageView
-                        android:id="@+id/ivWeeklyPicFour"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/cloud" />
-                </LinearLayout>
+<!--                    <ImageView-->
+<!--                        android:id="@+id/ivWeeklyPicFour"-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:src="@drawable/cloud" />-->
+<!--                </LinearLayout>-->
 
-                <TextView
-                    android:id="@+id/tvWeeklyTempFour"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="25°C"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/tvWeeklyTempFour"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginBottom="15dp"-->
+<!--                    android:fontFamily="sans-serif-medium"-->
+<!--                    android:text="25°C"-->
+<!--                    android:textColor="@color/colorPrimary"-->
+<!--                    android:textSize="30sp"-->
+<!--                    android:textStyle="bold" />-->
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="3dp"
-                android:background="@drawable/bg_style"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="3dp"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginRight="3dp"-->
+<!--                android:background="@drawable/bg_style"-->
+<!--                android:orientation="vertical">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
 
-                    <TextView
-                        android:id="@+id/tvWeeklyDateFive"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="15dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="TUE"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="25sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvWeeklyDateFive"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:text="TUE"-->
+<!--                        android:textColor="@color/colorPrimary"-->
+<!--                        android:textSize="25sp" />-->
 
-                    <ImageView
-                        android:id="@+id/ivWeeklyPicFive"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/cloud" />
-                </LinearLayout>
+<!--                    <ImageView-->
+<!--                        android:id="@+id/ivWeeklyPicFive"-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:src="@drawable/cloud" />-->
+<!--                </LinearLayout>-->
 
-                <TextView
-                    android:id="@+id/tvWeeklyTempFive"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="25°C"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/tvWeeklyTempFive"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginBottom="15dp"-->
+<!--                    android:fontFamily="sans-serif-medium"-->
+<!--                    android:text="25°C"-->
+<!--                    android:textColor="@color/colorPrimary"-->
+<!--                    android:textSize="30sp"-->
+<!--                    android:textStyle="bold" />-->
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="3dp"
-                android:background="@drawable/bg_style"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="3dp"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginRight="3dp"-->
+<!--                android:background="@drawable/bg_style"-->
+<!--                android:orientation="vertical">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
 
-                    <TextView
-                        android:id="@+id/tvWeeklyDateSix"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="15dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="TUE"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="25sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvWeeklyDateSix"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:text="TUE"-->
+<!--                        android:textColor="@color/colorPrimary"-->
+<!--                        android:textSize="25sp" />-->
 
-                    <ImageView
-                        android:id="@+id/ivWeeklyPicSix"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/cloud" />
-                </LinearLayout>
+<!--                    <ImageView-->
+<!--                        android:id="@+id/ivWeeklyPicSix"-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:src="@drawable/cloud" />-->
+<!--                </LinearLayout>-->
 
-                <TextView
-                    android:id="@+id/tvWeeklyTempSix"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="25°C"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/tvWeeklyTempSix"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginBottom="15dp"-->
+<!--                    android:fontFamily="sans-serif-medium"-->
+<!--                    android:text="25°C"-->
+<!--                    android:textColor="@color/colorPrimary"-->
+<!--                    android:textSize="30sp"-->
+<!--                    android:textStyle="bold" />-->
+<!--            </LinearLayout>-->
 
-        </LinearLayout>
-    </ScrollView>
+<!--        </LinearLayout>-->
+<!--    </ScrollView>-->
 </LinearLayout>
